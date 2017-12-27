@@ -13,12 +13,11 @@ const reporter = new JasmineConsoleReporter({
     activity: false
 });
 testRunner.loadConfig({
-    spec_dir: 'tests',
+    spec_dir: 'dist/spec',
     spec_files: ['**/*spec.js'],
     random: false,
     seed: null,
     stopSpecOnExpectationFailure: false
 });
-// jasmine.env.clearReporters();
 testRunner.addReporter(reporter);
 testRunner.execute();
