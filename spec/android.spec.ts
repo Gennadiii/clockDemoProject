@@ -30,5 +30,4 @@ describe('Appium test', function () {
     expect(await service.morning.getVolume()).toEqual('70%', 'Volume does not equal 70%')
   });
 
-
 });
