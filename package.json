@@ -1,0 +1,21 @@
+{
+  "name": "demo_project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "devDependencies": {
+    "@types/jasmine": "^2.8.2",
+    "@types/node": "^8.5.2",
+    "jasmine-console-reporter": "^2.0.1",
+    "wd": "^0.3.12"
+  },
+  "scripts": {
+    "test": "node dist/jasmine-conf.js"
+  },
+  "dependencies": {
+    "jasmine": "^2.8.0",
+    "webdriver-ts": "^0.1.0"
+  },
+  "author": "",
+  "license": "ISC"
+}
