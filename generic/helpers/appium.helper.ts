@@ -8,7 +8,7 @@ class Driver {
     await driver.init({
       deviceName: 'Galaxy J7',
       platformName: 'Android',
-      app: "C:\\Users\\gmish\\Desktop\\Speaking Alarm Clock-0.9.112.apk",
+      app: `C:\\Users\\${process.env.USERNAME}\\Desktop\\Speaking Alarm Clock-0.9.112.apk`
     }).setImplicitWaitTimeout(10 * 1000);
     return driver;
   }
