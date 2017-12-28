@@ -1,11 +1,9 @@
-import {Driver} from "../../exporter/generic/helpers";
+import {driver} from "../../exporter/generic/helpers";
 
 
 interface IComponent {
   isDisplayed: () => Promise<boolean>;
 }
-
-const driver = new Driver().init();
 
 
 class Component implements IComponent {
