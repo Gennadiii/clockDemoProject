@@ -4,15 +4,18 @@
   "description": "",
   "main": "index.js",
   "devDependencies": {
+    "@types/command-line-args": "^4.0.2",
     "@types/jasmine": "2.8.2",
     "@types/node": "8.5.2"
   },
   "scripts": {
-    "test": "node jasmine-conf.ts"
+    "test": "node dist/testRunner.js"
   },
   "dependencies": {
+    "command-line-args": "^4.0.7",
     "jasmine": "2.8.0",
     "jasmine-console-reporter": "2.0.1",
+    "readline-sync": "^1.4.7",
     "wd": "0.3.12"
   },
   "author": "",

@@ -1,20 +1,4 @@
-import process = require( 'process' );
-import {getServiceFor} from "../exporter/assembler";
-import {ILandingService, IMorningService} from "../exporter/generic/services";
-
-
-// const desiredPlatform = process.argv[2];
-let desiredPlatform = 'android';
-
-type Tservice = {
-  landing: ILandingService;
-  morning: IMorningService;
-}
-
-const service: Tservice = {
-  landing: getServiceFor[desiredPlatform].landing(),
-  morning: getServiceFor[desiredPlatform].morning()
-};
+import {service} from "../testRunner";
 
 
 describe('Appium test', function () {

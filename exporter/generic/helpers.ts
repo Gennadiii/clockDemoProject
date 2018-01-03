@@ -1,4 +1,4 @@
-import {Driver} from "../../generic/helpers/appium.helper";
+import {driver} from "../../testRunner";
 
 
-export {Driver};
+export {driver};
