@@ -1,15 +1,15 @@
-import {IMorningPa} from "../../exporter/generic/pageActions";
+import {MorningPa} from "../../exporter/generic/pageActions";
 
 
-interface IMorningService {
+interface MorningServiceInterface {
   getVolume: () => Promise<string>;
   pageOpened: () => Promise<boolean>;
 }
 
 
-class MorningService implements IMorningService {
+class MorningService implements MorningServiceInterface {
 
-  constructor(public page: IMorningPa) {
+  constructor(public page: MorningPa) {
   }
 
   getVolume() {
@@ -17,12 +17,13 @@ class MorningService implements IMorningService {
   }
 
   async pageOpened() {
-    return (await this.page.isOpen()).reduce((prev, cur) => {
-      return prev && cur;
-    }, true);
+    return (await this.page.isOpen())
+      .reduce((prev, cur) => {
+        return prev && cur;
+      }, true);
   }
 
 }
 
 
-export {MorningService, IMorningService};
+export {MorningService};
