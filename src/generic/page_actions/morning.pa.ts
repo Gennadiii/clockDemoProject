@@ -1,21 +1,21 @@
-import {IMorningPo} from "../../exporter/generic/pageObjects";
-import {PagePa, IPagePa} from "../../exporter/generic/pageActions";
+import {MorningPo} from "../../exporter/generic/pageObjects";
+import {PagePa} from "../../exporter/generic/pageActions";
 
 
-interface IMorningPa extends IPagePa {
+interface MorningPaInterface extends PagePa {
   getVolume: () => Promise<string>;
 }
 
 
-class MorningPa extends PagePa implements IMorningPa {
+class MorningPa extends PagePa implements MorningPaInterface {
 
-    constructor(public page: IMorningPo) {
-        super();
-    }
+  constructor(public page: MorningPo) {
+    super();
+  }
 
-    isOpen() {
-        return Promise.all([this.page.volumeLabel.isDisplayed()]);
-    }
+  isOpen() {
+    return Promise.all([this.page.volumeLabel.isDisplayed()]);
+  }
 
   getVolume() {
     console.log('Getting volume');
@@ -25,4 +25,4 @@ class MorningPa extends PagePa implements IMorningPa {
 }
 
 
-export {MorningPa, IMorningPa};
+export {MorningPa};

@@ -4,7 +4,7 @@ const fs = require('fs');
 
 
 const specsPath = `${__dirname}/../../spec/`;
-const testChoiseNumberPath = `./testChoiseNumber.indexHelper`;
+const testChoiseNumberPath = `${__dirname}/testChoiseNumber.indexHelper`;
 
 
 async function selectTests(): Promise<string[]> {

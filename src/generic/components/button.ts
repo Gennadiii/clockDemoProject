@@ -1,15 +1,15 @@
-import {Component, IComponent} from "./component";
+import {Component} from "./component";
 
 
-interface IButton extends IComponent {
+interface ButtonInterface extends Component {
   click: () => Promise<void>;
 }
 
 
-class Button extends Component implements IButton {
+class Button extends Component implements ButtonInterface {
 
-  constructor(protected selector) {
-    super(selector);
+  constructor(protected ef) {
+    super(ef);
   }
 
   async click() {
@@ -18,4 +18,4 @@ class Button extends Component implements IButton {
 
 }
 
-export {Button, IButton};
+export {Button};
