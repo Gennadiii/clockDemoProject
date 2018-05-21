@@ -1,10 +1,9 @@
-import {service} from "../testRunner";
+import {service} from "../index";
 
 
-describe('Appium test', function () {
+describe('Appium test', () => {
 
   it('Gets landing page', async () => {
-    await service.landing.skipUpdate();
     expect(await service.landing.pageOpened()).toBeTruthy('Landing page did not get opened')
   });
 
