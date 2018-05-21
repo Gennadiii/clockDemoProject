@@ -1,15 +1,15 @@
-interface PagePaInterface {
-  isOpen: () => Promise<boolean[]>;
+interface IPagePa {
+    isOpen: () => Promise<boolean[]>;
 }
 
 
-class PagePa implements PagePaInterface {
+class PagePa implements IPagePa {
 
-  isOpen() {
-    return Promise.all([Promise.resolve(true)]);
-  }
+    isOpen() {
+        return Promise.all([Promise.resolve(true)]);
+    }
 
 }
 
 
-export {PagePa};
+export {PagePa, IPagePa};

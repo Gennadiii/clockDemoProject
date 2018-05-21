@@ -1,26 +1,30 @@
 import {LandingPo, MorningPo} from "../../exporter/generic/pageObjects";
+
 import {LandingPa, MorningPa} from "../../exporter/generic/pageActions";
-import {LandingService, MorningService} from "../../exporter/generic/services";
-import {assemblerInterface} from "../../exporter/assembler";
-import {ef} from "../../helpers/element_finder/elementFinder.helper";
-import {helper} from "../../helpers/helper";
+
+import {
+  LandingService, MorningService,
+  ILandingService, IMorningService
+} from "../../exporter/generic/services";
+
+import {Iassembler} from "../../exporter/assembler";
 
 
-const androidServices: assemblerInterface = {
+const androidAssembler: Iassembler = {
 
-  landing: helper.assembler.buildService({
-    service: LandingService,
-    elementFinder: ef,
-    parts: [{po: LandingPo, pa: LandingPa}]
-  }),
+  landing(): ILandingService {
+    const landingPo = new LandingPo(),
+      landingPa = new LandingPa(landingPo);
+    return new LandingService(landingPa);
+  },
 
-  morning: helper.assembler.buildService({
-    service: MorningService,
-    elementFinder: ef,
-    parts: [{po: MorningPo, pa: MorningPa}]
-  }),
+  morning(): IMorningService {
+    const morningPo = new MorningPo(),
+      morningPa = new MorningPa(morningPo);
+    return new MorningService(morningPa);
+  }
 
 };
 
 
-export {androidServices};
+export {androidAssembler};

@@ -1,6 +1,13 @@
-import {LandingService} from "../../generic/services/landing.service";
+import {
+  LandingService, ILandingService
+} from "../../generic/services/landing.service";
 
-import {MorningService} from "../../generic/services/morning.service";
+import {
+  MorningService, IMorningService
+} from "../../generic/services/morning.service";
 
 
-export {LandingService, MorningService};
+export {
+  LandingService, MorningService,
+  ILandingService, IMorningService
+};

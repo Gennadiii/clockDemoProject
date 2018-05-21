@@ -1,22 +1,20 @@
-import {Label} from "../../exporter/generic/components";
-import {elementFinderInterface} from "../../helpers/element_finder/elementFinder.helper";
+import {
+    Label,
+    ILabel
+} from "../../exporter/generic/components";
 
 
-interface MorningPoInterface {
-  volumeLabel: Label;
+interface IMorningPo {
+  volumeLabel: ILabel;
+}
+
+class MorningPo implements IMorningPo {
+
+    get volumeLabel() {
+        return new Label('wan.pclock:id/textViewPercent');
+    }
+
 }
 
 
-class MorningPo implements MorningPoInterface {
-
-  constructor(private ef: elementFinderInterface) {
-  }
-
-  get volumeLabel() {
-    return new Label(this.ef.id('wan.pclock:id/textViewPercent'));
-  }
-
-}
-
-
-export {MorningPo};
+export {MorningPo, IMorningPo};

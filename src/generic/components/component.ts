@@ -1,22 +1,26 @@
-interface ComponentInterface {
+import {driver} from "../../exporter/generic/helpers";
+
+
+interface IComponent {
   isDisplayed: () => Promise<boolean>;
 }
 
 
-class Component implements ComponentInterface {
+class Component implements IComponent {
 
-  constructor(protected ef) {
+  constructor(protected selector) {
   }
 
   protected get element() {
-    return this.ef();
+    return driver
+      .then(driver => driver.elementById(this.selector));
   }
 
   async isDisplayed() {
-    return (await this.element).isDisplayed();
+    return (await this.element).isDisplayed()
   }
 
 }
 
 
-export {Component};
+export {Component, IComponent};

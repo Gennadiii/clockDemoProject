@@ -1,26 +1,25 @@
-import {Button} from "../../exporter/generic/components";
-import {elementFinderInterface} from "../../helpers/element_finder/elementFinder.helper";
+import {
+  Button,
+  IButton
+} from "../../exporter/generic/components";
 
 
-interface LandingPoInterface {
-  skipVersionButton: Button;
-  morningButton: Button;
+interface ILandingPo {
+  skipVersionButton: IButton;
+  morningButton: IButton;
 }
 
 
-class LandingPo implements LandingPoInterface {
-
-  constructor(private ef: elementFinderInterface) {
-  }
+class LandingPo implements ILandingPo {
 
   get skipVersionButton() {
-    return new Button(this.ef.id('android:id/button3'));
+    return new Button('android:id/button3');
   }
 
   get morningButton() {
-    return new Button(this.ef.id('wan.pclock:id/MorningConfigButton'));
+    return new Button('wan.pclock:id/MorningConfigButton')
   };
 }
 
 
-export {LandingPo};
+export {LandingPo, ILandingPo};
