@@ -15,8 +15,10 @@ const optionDefinitions = [
 
 export const defaultOptions = {
   platform: 'Android',
-  deviceName: 'Galaxy J7',
+  platformVersion: "8.0",
+  deviceName: "Android Emulator",
   app: `C:/Users/${process.env.USERNAME}/Desktop/Speaking Alarm Clock-0.9.112.apk`,
+  automationName: "UiAutomator2",
   implicitWait: 10 * 1000,
   appiumPort: 4723,
   tests: ['**/*spec.js']
