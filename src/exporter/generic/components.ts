@@ -1,17 +1,16 @@
 import {
-    Component, IComponent
+    Component
 } from "../../generic/components/component";
 
 import {
-    Button, IButton
+    Button
 } from "../../generic/components/button";
 
 import {
-  Label, ILabel
+  Label
 } from "../../generic/components/label";
 
 
 export {
     Component, Button, Label,
-    IComponent, IButton, ILabel
 };

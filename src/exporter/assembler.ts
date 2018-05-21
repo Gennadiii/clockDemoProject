@@ -1,10 +1,10 @@
-import {ILandingService, IMorningService} from "./generic/services";
+import {LandingService, MorningService} from "./generic/services";
 import {androidAssembler} from "../platforms/android/androidAssembler";
 
 
-interface Iassembler {
-  landing: () => ILandingService;
-  morning: () => IMorningService;
+interface assemblerInterface {
+  landing: () => LandingService;
+  morning: () => MorningService;
 }
 
 
@@ -14,12 +14,12 @@ const getServiceFor = {
 
 };
 
-type Tservice = {
-  landing: ILandingService;
-  morning: IMorningService;
+type service = {
+  landing: LandingService;
+  morning: MorningService;
 }
 
-function getServices(params: IgetServices): Tservice {
+function getServices(params: getServicesInterface): service {
   const {platform} = params;
   return {
     landing: getServiceFor[platform].landing(),
@@ -30,10 +30,10 @@ function getServices(params: IgetServices): Tservice {
 
 export {
   getServices,
-  Iassembler
+  assemblerInterface
 };
 
 
-interface IgetServices {
+interface getServicesInterface {
   platform: string;
 }

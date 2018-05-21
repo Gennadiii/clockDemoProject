@@ -1,14 +1,14 @@
-import {Component, IComponent} from "./component";
+import {Component} from "./component";
 
 
-interface ILabel extends IComponent {
+interface LabelInterface extends Component {
   text: () => Promise<string>;
 }
 
-class Label extends Component implements ILabel {
+class Label extends Component implements LabelInterface {
 
-  constructor(protected selector) {
-    super(selector);
+  constructor(protected ef) {
+    super(ef);
   }
 
   async text() {
@@ -18,4 +18,4 @@ class Label extends Component implements ILabel {
 }
 
 
-export {Label, ILabel};
+export {Label};

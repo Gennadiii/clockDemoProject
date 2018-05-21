@@ -1,18 +1,18 @@
 const wd = require('wd');
 
 
-interface IDriver {
+interface DriverInterface {
   init: () => Promise<any>;
 }
 
 
-class Driver implements IDriver {
+class Driver implements DriverInterface {
 
   private capabilities;
   private implicitWait;
   private appiumPort;
 
-  constructor(private params: IDiverParams) {
+  constructor(private params: DiverParamsInterface) {
     const {
       implicitWait,
       capabilities,
@@ -35,15 +35,15 @@ class Driver implements IDriver {
 export {Driver};
 
 
-interface Icapabilities {
+interface capabilitiesInterface {
   deviceName: string;
   platformName: string;
   app: string;
 }
 
 
-interface IDiverParams {
-  capabilities: Icapabilities;
+interface DiverParamsInterface {
+  capabilities: capabilitiesInterface;
   implicitWait: number | string;
   appiumPort: number | string;
 }

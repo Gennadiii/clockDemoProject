@@ -1,22 +1,21 @@
-import {ILandingPa} from "../../exporter/generic/pageActions";
+import {LandingPa} from "../../exporter/generic/pageActions";
 
 
-interface ILandingService {
-  skipUpdate: () => Promise<ILandingService>;
+interface LandingServiceInterface {
+  skipUpdate: () => Promise<void>;
   openMorningTab: () => Promise<void>;
   pageOpened: () => Promise<boolean>;
 }
 
 
-class LandingService implements ILandingService {
+class LandingService implements LandingServiceInterface {
 
-  constructor(public page: ILandingPa) {
+  constructor(public page: LandingPa) {
   }
 
 
   async skipUpdate() {
     await this.page.skipVersionUpdate();
-    return this;
   };
 
   openMorningTab() {
@@ -24,12 +23,13 @@ class LandingService implements ILandingService {
   };
 
   async pageOpened() {
-    return (await this.page.isOpen()).reduce((prev, cur) => {
-      return prev && cur;
-    }, true);
+    return (await this.page.isOpen())
+      .reduce((prev, cur) => {
+        return prev && cur;
+      }, true);
   }
 
 }
 
 
-export {LandingService, ILandingService};
+export {LandingService};

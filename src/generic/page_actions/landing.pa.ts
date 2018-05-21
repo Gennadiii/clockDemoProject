@@ -1,16 +1,16 @@
-import {PagePa, IPagePa} from "../../exporter/generic/pageActions";
-import {ILandingPo} from "../page_objects/landing.po";
+import {PagePa} from "../../exporter/generic/pageActions";
+import {LandingPo} from "../page_objects/landing.po";
 
 
-interface ILandingPa extends IPagePa {
+interface LandingPaInterface extends PagePa {
   skipVersionUpdate: () => Promise<void>;
   openMorningTab: () => Promise<void>;
 }
 
 
-class LandingPa extends PagePa implements ILandingPa {
+class LandingPa extends PagePa implements LandingPaInterface {
 
-  constructor(public page: ILandingPo) {
+  constructor(public page: LandingPo) {
     super();
   }
 
@@ -31,4 +31,4 @@ class LandingPa extends PagePa implements ILandingPa {
 }
 
 
-export {LandingPa, ILandingPa};
+export {LandingPa};
