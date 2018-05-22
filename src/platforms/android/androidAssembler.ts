@@ -3,23 +3,24 @@ import {LandingPa, MorningPa} from "../../exporter/generic/pageActions";
 import {LandingService, MorningService} from "../../exporter/generic/services";
 import {assemblerInterface} from "../../exporter/assembler";
 import {ef} from "../../helpers/element_finder/elementFinder.helper";
+import {helper} from "../../helpers/helper";
 
 
-const androidAssembler: assemblerInterface = {
+const androidServices: assemblerInterface = {
 
-  landing(): LandingService {
-    const landingPo = new LandingPo(ef),
-      landingPa = new LandingPa(landingPo);
-    return new LandingService(landingPa);
-  },
+  landing: helper.assembler.buildService({
+    service: LandingService,
+    elementFinder: ef,
+    parts: [{po: LandingPo, pa: LandingPa}]
+  }),
 
-  morning(): MorningService {
-    const morningPo = new MorningPo(ef),
-      morningPa = new MorningPa(morningPo);
-    return new MorningService(morningPa);
-  }
+  morning: helper.assembler.buildService({
+    service: MorningService,
+    elementFinder: ef,
+    parts: [{po: MorningPo, pa: MorningPa}]
+  }),
 
 };
 
 
-export {androidAssembler};
+export {androidServices};

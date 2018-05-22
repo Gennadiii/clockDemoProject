@@ -13,7 +13,7 @@ const options = {
 };
 
 
-console.log(`Test run is about to start with next configuration:
+console.info(`Test run is about to start with next configuration:
 ${JSON.stringify(options, null, 4)}`);
 
 

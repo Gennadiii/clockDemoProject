@@ -18,7 +18,7 @@ class MorningPa extends PagePa implements MorningPaInterface {
   }
 
   getVolume() {
-    console.log('Getting volume');
+    console.info('Getting volume');
     return this.page.volumeLabel.text();
   }
 

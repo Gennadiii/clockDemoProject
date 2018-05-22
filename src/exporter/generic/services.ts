@@ -1,10 +1,6 @@
-import {
-  LandingService
-} from "../../generic/services/landing.service";
+import {LandingService} from "../../generic/services/landing.service";
 
-import {
-  MorningService
-} from "../../generic/services/morning.service";
+import {MorningService} from "../../generic/services/morning.service";
 
 
 export {LandingService, MorningService};
