@@ -1,12 +1,8 @@
-import {
-  LandingPo,
-} from "../../generic/page_objects/landing.po";
+import {LandingPo} from "../../generic/page_objects/landing.po";
 
-import {
-  MorningPo,
-} from "../../generic/page_objects/morning.po";
+import {MorningPo} from "../../generic/page_objects/morning.po";
 
 
 export {
-    LandingPo, MorningPo,
+  LandingPo, MorningPo,
 };
