@@ -2,12 +2,12 @@ import {driver} from "../../../index";
 
 
 interface elementFinderInterface {
-  id: (string) => Promise<any>;
-  xpath: (string) => Promise<any>;
+  id: (string) => () => Promise<any>;
+  xpath: (string) => () => Promise<any>;
 }
 
 
-const ef = {
+const ef: elementFinderInterface = {
 
   id(id: string) {
     return findElementBy('id', id);
@@ -24,6 +24,5 @@ export {ef, elementFinderInterface}
 
 
 function findElementBy(selectorType: string, value: string) {
-  return () => driver
-    .then(driver => driver.element(selectorType, value));
+  return async () => (await driver).element(selectorType, value)
 }

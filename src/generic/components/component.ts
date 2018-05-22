@@ -19,4 +19,4 @@ class Component implements ComponentInterface {
 }
 
 
-export {Component};
+module.exports.Component = Component;

@@ -1,8 +1,11 @@
-import {LandingPo, MorningPo} from "../../exporter/generic/pageObjects";
-import {LandingPa, MorningPa} from "../../exporter/generic/pageActions";
-import {LandingService, MorningService} from "../../exporter/generic/services";
-import {assemblerInterface} from "../../exporter/assembler";
+import {assemblerInterface} from "../../assembler";
 import {ef} from "../../helpers/element_finder/elementFinder.helper";
+import LandingService from "../../generic/services/landing.service";
+import MorningService from "../../generic/services/morning.service";
+import MorningPa from "../../generic/page_actions/morning.pa";
+import MorningPo from "../../generic/page_objects/morning.po";
+import LandingPa from "../../generic/page_actions/landing.pa";
+import LandingPo from "../../generic/page_objects/landing.po";
 
 
 const androidAssembler: assemblerInterface = {

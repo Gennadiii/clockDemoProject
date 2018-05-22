@@ -1,4 +1,4 @@
-import {MorningPa} from "../../exporter/generic/pageActions";
+import MorningPa from "../page_actions/morning.pa";
 
 
 interface MorningServiceInterface {
@@ -26,4 +26,5 @@ class MorningService implements MorningServiceInterface {
 }
 
 
-export {MorningService};
+module.exports = MorningService;
+export default MorningService;

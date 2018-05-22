@@ -1,4 +1,4 @@
-const Filehound = require('filehound');
+import {helper} from "./helpers";
 const prompt = require('multiselect-prompt');
 const fs = require('fs');
 
@@ -10,7 +10,7 @@ const testChoiseNumberPath = `${__dirname}/testChoiseNumber.indexHelper`;
 async function selectTests(): Promise<string[]> {
   try {
 
-    const testsPaths = await getTestsPaths();
+    const testsPaths = helper.fs.getFiles(specsPath);
     const promptOptions = getPromptObj(testsPaths);
     return await multiselectPrompt({
       question: 'Select tests to run',
@@ -26,18 +26,6 @@ async function selectTests(): Promise<string[]> {
 
 export {selectTests}
 
-
-function getTestsPaths() {
-  return new Promise((resolve, reject) => {
-    Filehound.create()
-      .ext('js')
-      .paths(specsPath)
-      .find((err, testsPaths) => {
-        err && reject(new Error(`Couldn't find spec files\n${err}`));
-        resolve(testsPaths.map(testPath => testPath));
-      });
-  });
-}
 
 function getPromptObj(arr) {
   const result = arr.map(el => {

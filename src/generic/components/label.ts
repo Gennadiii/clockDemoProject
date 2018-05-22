@@ -1,4 +1,4 @@
-import {Component} from "./component";
+import Component from "./component";
 
 
 interface LabelInterface extends Component {
@@ -18,4 +18,5 @@ class Label extends Component implements LabelInterface {
 }
 
 
-export {Label};
+export default Label;
+module.exports = Label;

@@ -1,5 +1,5 @@
-import {PagePa} from "../../exporter/generic/pageActions";
-import {LandingPo} from "../page_objects/landing.po";
+import PagePa from "./page.pa";
+import LandingPo from "../page_objects/landing.po";
 
 
 interface LandingPaInterface extends PagePa {
@@ -31,4 +31,5 @@ class LandingPa extends PagePa implements LandingPaInterface {
 }
 
 
-export {LandingPa};
+module.exports = LandingPa;
+export default LandingPa;

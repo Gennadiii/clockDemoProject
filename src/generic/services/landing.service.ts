@@ -1,4 +1,4 @@
-import {LandingPa} from "../../exporter/generic/pageActions";
+import LandingPa from "../page_actions/landing.pa";
 
 
 interface LandingServiceInterface {
@@ -32,4 +32,5 @@ class LandingService implements LandingServiceInterface {
 }
 
 
-export {LandingService};
+module.exports = LandingService;
+export default LandingService;

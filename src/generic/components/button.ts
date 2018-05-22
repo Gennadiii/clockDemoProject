@@ -1,5 +1,5 @@
-import {Component} from "./component";
-
+const component = require('./component').Component;
+console.log(new component());
 
 interface ButtonInterface extends Component {
   click: () => Promise<void>;
@@ -18,4 +18,4 @@ class Button extends Component implements ButtonInterface {
 
 }
 
-export {Button};
+module.exports = Button;

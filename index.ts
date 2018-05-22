@@ -27,7 +27,7 @@ const {implicitWait, appiumPort, platform} = options;
 const appium = new Driver({capabilities, implicitWait, appiumPort});
 export const driver = appium.init();
 
-import {getServices} from "./src/exporter/assembler";
+import {getServices} from "./src/assembler";
 
 
 export const service = getServices({platform});

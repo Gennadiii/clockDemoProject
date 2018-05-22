@@ -12,4 +12,5 @@ class PagePa implements PagePaInterface {
 }
 
 
-export {PagePa};
+module.exports = PagePa;
+export default PagePa;
