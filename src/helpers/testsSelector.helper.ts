@@ -73,9 +73,9 @@ function markAllItemsSelected(items) {
 }
 
 function logChoises(items) {
-  console.log();
-  items.forEach(item => console.log(item));
-  console.log();
+  console.info();
+  items.forEach(item => console.info(item));
+  console.info();
 }
 
 function getSelectedItemsValues(items) {

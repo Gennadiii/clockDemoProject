@@ -2,8 +2,8 @@ import {driver} from "../../../index";
 
 
 interface elementFinderInterface {
-  id: (string) => Promise<any>;
-  xpath: (string) => Promise<any>;
+  id: (string) => () => Promise<any>;
+  xpath: (string) => () => Promise<any>;
 }
 
 

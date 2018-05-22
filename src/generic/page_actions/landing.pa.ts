@@ -19,12 +19,12 @@ class LandingPa extends PagePa implements LandingPaInterface {
   };
 
   skipVersionUpdate() {
-    console.log('Skiping version update');
+    console.info('Skiping version update');
     return this.page.skipVersionButton.click();
   };
 
   openMorningTab() {
-    console.log('Opening morning tab');
+    console.info('Opening morning tab');
     return this.page.morningButton.click();
   };
 
