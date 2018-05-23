@@ -1,4 +1,5 @@
 import {Component} from "./component";
+import {helper} from "../../helpers/helper";
 
 
 interface LabelInterface extends Component {
@@ -18,4 +19,5 @@ class Label extends Component implements LabelInterface {
 }
 
 
+helper.lib.addClass(Label);
 export {Label};

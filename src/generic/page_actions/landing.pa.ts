@@ -1,5 +1,6 @@
 import {PagePa} from "../../exporter/generic/pageActions";
 import {LandingPo} from "../page_objects/landing.po";
+import {helper} from "../../helpers/helper";
 
 
 interface LandingPaInterface extends PagePa {
@@ -31,4 +32,5 @@ class LandingPa extends PagePa implements LandingPaInterface {
 }
 
 
+helper.lib.addClass(LandingPa);
 export {LandingPa};

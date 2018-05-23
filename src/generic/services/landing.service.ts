@@ -1,4 +1,5 @@
 import {LandingPa} from "../../exporter/generic/pageActions";
+import {helper} from "../../helpers/helper";
 
 
 interface LandingServiceInterface {
@@ -32,4 +33,5 @@ class LandingService implements LandingServiceInterface {
 }
 
 
+helper.lib.addClass(LandingService);
 export {LandingService};

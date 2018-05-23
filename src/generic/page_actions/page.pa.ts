@@ -1,3 +1,6 @@
+import {helper} from "../../helpers/helper";
+
+
 interface PagePaInterface {
   isOpen: () => Promise<boolean[]>;
 }
@@ -12,4 +15,5 @@ class PagePa implements PagePaInterface {
 }
 
 
+helper.lib.addClass(PagePa);
 export {PagePa};

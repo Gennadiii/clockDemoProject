@@ -1,3 +1,6 @@
+import {helper} from "../../helpers/helper";
+
+
 interface ComponentInterface {
   isDisplayed: () => Promise<boolean>;
 }
@@ -18,5 +21,5 @@ class Component implements ComponentInterface {
 
 }
 
-
+helper.lib.addClass(Component);
 export {Component};
