@@ -1,6 +1,5 @@
-import {Button} from "../../exporter/generic/components";
 import {elementFinderInterface} from "../../helpers/element_finder/elementFinder.helper";
-import {helper} from "../../helpers/helper";
+import {Button} from "../components/button";
 
 
 interface LandingPoInterface {
@@ -24,5 +23,4 @@ class LandingPo implements LandingPoInterface {
 }
 
 
-helper.lib.addClass(LandingPo);
 export {LandingPo};

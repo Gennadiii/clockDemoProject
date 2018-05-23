@@ -1,4 +1,4 @@
-const Filehound = require('filehound');
+import {fsHelper} from "./fs.helper";
 const prompt = require('multiselect-prompt');
 const fs = require('fs');
 

@@ -1,6 +1,5 @@
-import {MorningPo} from "../../exporter/generic/pageObjects";
-import {PagePa} from "../../exporter/generic/pageActions";
-import {helper} from "../../helpers/helper";
+import {PagePa} from "./page.pa";
+import {MorningPo} from "../page_objects/morning.po";
 
 
 interface MorningPaInterface extends PagePa {
@@ -26,5 +25,4 @@ class MorningPa extends PagePa implements MorningPaInterface {
 }
 
 
-helper.lib.addClass(MorningPa);
 export {MorningPa};

@@ -1,4 +1,4 @@
-import {assemblerInterface} from "../../exporter/assembler";
+import {assemblerInterface} from "../../assembler";
 import {ef} from "../../helpers/element_finder/elementFinder.helper";
 import {helper} from "../../helpers/helper";
 

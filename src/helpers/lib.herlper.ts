@@ -1,42 +1,63 @@
 import {fsHelper} from "./fs.helper";
+import {dateTimeHelper} from "./dateTime.helper";
 const fs = require('fs');
 
 
 const libHelper = {
 
-  all: getLib(),
+  all: null,
 
-  addClass(Class) {
-    const libProp = capitalize(Class.name);
-    findObjectWithProperty(this.all, libProp)[libProp] = Class;
+  build() {
+    const lib = {};
+    const libTypes = fs.readdirSync(`${__dirname}/../generic`);
+
+    libTypes.forEach(libType => {
+      lib[libType] = {};
+      fsHelper.getFiles(`${__dirname}/../generic/${libType}`)
+        .forEach(async file => {
+          const className = getClassName(file);
+          lib[libType][className] = null;
+          const importedFile = await import(file);
+          lib[libType][className] = importedFile[className];
+        });
+    });
+
+    this.all = lib;
   },
 
-  buildLib() {
-    fsHelper.getFiles(`${__dirname}/../generic`)
-      .forEach(file => require(file));
-    checkHealth(this.all);
-  }
+  healthCheck(lib) {
+    findNestedObjects(lib)
+      .forEach(obj => Object.keys(obj)
+        .forEach(key => {
+          if (obj[key] === null) {
+            throw new Error(`Lib didn't build correctly: ${JSON.stringify(key)}`);
+          }
+        }));
+    console.log(`Lib build - success`);
+  },
+
+  async waitReady(timeout = 1000, interval = 0) {
+    const startTime = +new Date();
+    let timeSpent = 0;
+    while (timeout > timeSpent) {
+      await dateTimeHelper.sleep(interval);
+      timeSpent = +new Date() - startTime;
+      try {
+        return this.healthCheck(this.all);
+      } catch (err) {
+        if (!err.message.includes(`Lib didn't build correctly`)) {
+          throw err;
+        }
+      }
+    }
+    this.healthCheck(this.all);
+  },
 
 };
 
 
 export {libHelper};
 
-
-function getLib() {
-  const lib = {};
-  const libTypes = fs.readdirSync(`${__dirname}/../generic`);
-
-  libTypes.forEach(libType => {
-    lib[libType] = {};
-    fsHelper.getFiles(`${__dirname}/../generic/${libType}`).forEach(file => {
-      const className = getClassName(file);
-      lib[libType][className] = null;
-    });
-  });
-
-  return lib;
-}
 
 function getClassName(path) {
   return path
@@ -45,23 +66,6 @@ function getClassName(path) {
     .slice(0, -1)
     .map(el => capitalize(el))
     .join('');
-}
-
-function checkHealth(lib) {
-  findNestedObjects(lib)
-    .forEach(obj => Object.keys(obj)
-      .forEach(key => {
-        if (obj[key] === null) {
-          throw new Error(`Lib didn't build correctly: ${JSON.stringify(key)}`);
-        }
-      }));
-  console.log(`Lib build - success`);
-}
-
-
-function findObjectWithProperty(obj, prop) {
-  const allObjects = findNestedObjects(obj);
-  return allObjects.find(obj => obj[prop] !== undefined);
 }
 
 function findNestedObjects(obj, result = [obj]) {

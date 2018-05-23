@@ -1,5 +1,4 @@
-import {MorningPa} from "../../exporter/generic/pageActions";
-import {helper} from "../../helpers/helper";
+import {MorningPa} from "../page_actions/morning.pa";
 
 
 interface MorningServiceInterface {
@@ -27,5 +26,4 @@ class MorningService implements MorningServiceInterface {
 }
 
 
-helper.lib.addClass(MorningService);
 export {MorningService};

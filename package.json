@@ -7,15 +7,6 @@
     "@types/command-line-args": "4.0.2",
     "@types/jasmine": "2.8.2",
     "@types/node": "8.5.2",
-<<<<<<< e3cfeff79fb7aff36aace3c2d3757770b0cc4cba
-<<<<<<< d0fe41cc9211a1f6a5a5ccbe0ef0c787a269b2e3
-    "filehound": "^1.16.3",
-=======
-    "filehound": "1.16.3",
->>>>>>> Reordered structure; Replaced console args with dotenv; Used multiselect prompt for user input
-=======
-    "filehound": "^1.16.3",
->>>>>>> Added service builder
     "multiselect-prompt": "0.3.1"
   },
   "scripts": {
@@ -23,7 +14,7 @@
   },
   "dependencies": {
     "appium": "1.8.0",
-    "dotenv-safe": "^5.0.1",
+    "dotenv-safe": "5.0.1",
     "jasmine": "2.8.0",
     "jasmine-console-reporter": "2.0.1",
     "wd": "0.3.12"

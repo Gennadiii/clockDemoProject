@@ -1,6 +1,5 @@
-import {Label} from "../../exporter/generic/components";
 import {elementFinderInterface} from "../../helpers/element_finder/elementFinder.helper";
-import {helper} from "../../helpers/helper";
+import {Label} from "../components/label";
 
 
 interface MorningPoInterface {
@@ -20,5 +19,4 @@ class MorningPo implements MorningPoInterface {
 }
 
 
-helper.lib.addClass(MorningPo);
 export {MorningPo};
