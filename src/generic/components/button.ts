@@ -1,4 +1,5 @@
 import {Component} from "./component";
+import {helper} from "../../helpers/helper";
 
 
 interface ButtonInterface extends Component {
@@ -18,4 +19,5 @@ class Button extends Component implements ButtonInterface {
 
 }
 
+helper.lib.addClass(Button);
 export {Button};

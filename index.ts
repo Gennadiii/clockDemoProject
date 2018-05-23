@@ -2,6 +2,7 @@ require('dotenv-safe').config();
 import {Driver} from "./src/helpers/appium.helper";
 import {jasmine} from "./jasmine-conf";
 import {selectTests} from "./src/helpers/testsSelector.helper";
+import {helper} from "./src/helpers/helper";
 
 
 const options = {
@@ -27,9 +28,10 @@ const {implicitWait, appiumPort, platform} = options;
 const appium = new Driver({capabilities, implicitWait, appiumPort});
 export const driver = appium.init();
 
+
+helper.lib.buildLib();
+
 import {getServices} from "./src/exporter/assembler";
-
-
 export const service = getServices({platform});
 
 
