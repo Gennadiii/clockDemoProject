@@ -14,6 +14,7 @@ const libHelper = {
   buildLib() {
     fsHelper.getFiles(`${__dirname}/../generic`)
       .forEach(file => require(file));
+    checkHealth(this.all);
   }
 
 };
@@ -31,7 +32,7 @@ function getLib() {
     fsHelper.getFiles(`${__dirname}/../generic/${libType}`).forEach(file => {
       const className = getClassName(file);
       lib[libType][className] = null;
-    })
+    });
   });
 
   return lib;
@@ -44,6 +45,17 @@ function getClassName(path) {
     .slice(0, -1)
     .map(el => capitalize(el))
     .join('');
+}
+
+function checkHealth(lib) {
+  findNestedObjects(lib)
+    .forEach(obj => Object.keys(obj)
+      .forEach(key => {
+        if (obj[key] === null) {
+          throw new Error(`Lib didn't build correctly: ${JSON.stringify(key)}`);
+        }
+      }));
+  console.log(`Lib build - success`);
 }
 
 
