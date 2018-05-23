@@ -2,6 +2,7 @@ require('dotenv-safe').config();
 import {Driver} from "./src/helpers/appium.helper";
 import {jasmine} from "./jasmine-conf";
 import {selectTests} from "./src/helpers/testsSelector.helper";
+import {helper} from "./src/helpers/helper";
 
 
 const options = {
@@ -27,15 +28,14 @@ const {implicitWait, appiumPort, platform} = options;
 const appium = new Driver({capabilities, implicitWait, appiumPort});
 export const driver = appium.init();
 
-import {getServices} from "./src/exporter/assembler";
-
-
-export const service = getServices({platform});
-
 
 void async function main() {
   const tests = (await selectTests())
     .map(test => `${__dirname}/spec/${test}`);
+  helper.lib.build();
+  await helper.lib.waitReady();
+  const getServices = (await import("./src/assembler")).getServices;
+  jasmine.env.service = getServices({platform});
   await jasmine.addSpecFiles(tests);
   await jasmine.execute();
 }();

@@ -1,5 +1,5 @@
-import {Button} from "../../exporter/generic/components";
 import {elementFinderInterface} from "../../helpers/element_finder/elementFinder.helper";
+import {Button} from "../components/button";
 
 
 interface LandingPoInterface {

@@ -1,5 +1,5 @@
-import {Label} from "../../exporter/generic/components";
 import {elementFinderInterface} from "../../helpers/element_finder/elementFinder.helper";
+import {Label} from "../components/label";
 
 
 interface MorningPoInterface {

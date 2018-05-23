@@ -18,5 +18,4 @@ class Component implements ComponentInterface {
 
 }
 
-
 export {Component};

@@ -1,9 +1,13 @@
-import {LandingPo, MorningPo} from "../../exporter/generic/pageObjects";
-import {LandingPa, MorningPa} from "../../exporter/generic/pageActions";
-import {LandingService, MorningService} from "../../exporter/generic/services";
-import {assemblerInterface} from "../../exporter/assembler";
+import {assemblerInterface} from "../../assembler";
 import {ef} from "../../helpers/element_finder/elementFinder.helper";
 import {helper} from "../../helpers/helper";
+
+
+const {
+  page_objects: {LandingPo, MorningPo},
+  page_actions: {LandingPa, MorningPa},
+  services: {LandingService, MorningService}
+} = (<any>helper.lib.all);
 
 
 const androidServices: assemblerInterface = {

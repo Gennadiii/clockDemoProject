@@ -1,4 +1,4 @@
-import {LandingPa} from "../../exporter/generic/pageActions";
+import {LandingPa} from "../page_actions/landing.pa";
 
 
 interface LandingServiceInterface {

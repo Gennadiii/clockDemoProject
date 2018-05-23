@@ -1,7 +1,5 @@
-import {service} from "../../index";
-
-
 describe('Appium test', () => {
+  const service = (<any>jasmine.getEnv()).service;
 
   it('Check volume', async () => {
     await service.landing.openMorningTab();
