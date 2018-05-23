@@ -4,18 +4,20 @@
   "description": "",
   "main": "index.js",
   "devDependencies": {
-    "@types/command-line-args": "^4.0.2",
+    "@types/command-line-args": "4.0.2",
     "@types/jasmine": "2.8.2",
-    "@types/node": "8.5.2"
+    "@types/node": "8.5.2",
+    "filehound": "^1.16.3",
+    "multiselect-prompt": "0.3.1"
   },
   "scripts": {
-    "test": "node dist/testRunner.js"
+    "test": "node dist/index.js"
   },
   "dependencies": {
-    "command-line-args": "^4.0.7",
+    "appium": "1.8.0",
+    "dotenv-safe": "^5.0.1",
     "jasmine": "2.8.0",
     "jasmine-console-reporter": "2.0.1",
-    "readline-sync": "^1.4.7",
     "wd": "0.3.12"
   },
   "author": "",
