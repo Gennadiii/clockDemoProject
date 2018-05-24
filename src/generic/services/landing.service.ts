@@ -18,15 +18,12 @@ class LandingService implements LandingServiceInterface {
     await this.page.skipVersionUpdate();
   };
 
-  openMorningTab() {
-    return this.page.openMorningTab();
+  async openMorningTab() {
+    await this.page.openMorningTab();
   };
 
   async pageOpened() {
-    return (await this.page.isOpen())
-      .reduce((prev, cur) => {
-        return prev && cur;
-      }, true);
+    return await this.page.checkIsOpen();
   }
 
 }

@@ -1,4 +1,4 @@
-import {PagePa} from "./page.pa";
+import {BasePagePa} from "./basePage.pa";
 import {MorningPo} from "../page_objects/morning.po";
 import {helper} from "../../helpers/helper";
 
@@ -6,19 +6,15 @@ import {helper} from "../../helpers/helper";
 const log = helper.logger.get('MorningPa');
 
 
-interface MorningPaInterface extends PagePa {
+interface MorningPaInterface extends BasePagePa {
   getVolume: () => Promise<string>;
 }
 
 
-class MorningPa extends PagePa implements MorningPaInterface {
+class MorningPa extends BasePagePa implements MorningPaInterface {
 
   constructor(public page: MorningPo) {
     super();
-  }
-
-  isOpen() {
-    return Promise.all([this.page.volumeLabel.isDisplayed()]);
   }
 
   getVolume() {

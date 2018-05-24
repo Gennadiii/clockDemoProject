@@ -17,10 +17,7 @@ class MorningService implements MorningServiceInterface {
   }
 
   async pageOpened() {
-    return (await this.page.isOpen())
-      .reduce((prev, cur) => {
-        return prev && cur;
-      }, true);
+    return await this.page.checkIsOpen();
   }
 
 }
