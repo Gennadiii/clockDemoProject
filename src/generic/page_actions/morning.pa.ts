@@ -1,5 +1,9 @@
 import {PagePa} from "./page.pa";
 import {MorningPo} from "../page_objects/morning.po";
+import {helper} from "../../helpers/helper";
+
+
+const log = helper.logger.get('MorningPa');
 
 
 interface MorningPaInterface extends PagePa {
@@ -18,7 +22,7 @@ class MorningPa extends PagePa implements MorningPaInterface {
   }
 
   getVolume() {
-    console.info('Getting volume');
+    log.info('Getting volume');
     return this.page.volumeLabel.text();
   }
 

@@ -5,32 +5,32 @@ import {selectTests} from "./src/helpers/testsSelector.helper";
 import {helper} from "./src/helpers/helper";
 
 
-const options = {
-  platform: process.env.PLATFORM,
-  deviceName: process.env.DEVICE_NAME,
-  app: process.env.APP,
-  implicitWait: process.env.IMPLICIT_WAIT,
-  appiumPort: process.env.APPIUM_PORT
-};
+const log = helper.logger.get('index');
 
 
-console.info(`Test run is about to start with next configuration:
-${JSON.stringify(options, null, 4)}`);
+const {
+  platform, deviceName, app, implicitWait, appiumPort, specs
+} = process.env;
+
+
+log.info(`Test run is about to start with next configuration:
+${JSON.stringify(
+  {platform, deviceName, app, implicitWait, appiumPort, specs},
+  null, 4)}`);
 
 
 const capabilities = {
-  deviceName: options.deviceName,
-  platformName: options.platform,
-  app: options.app
+  deviceName,
+  app,
+  platformName: platform,
 };
-const {implicitWait, appiumPort, platform} = options;
 
 const appium = new Driver({capabilities, implicitWait, appiumPort});
 export const driver = appium.init();
 
 
 void async function main() {
-  const tests = (await selectTests())
+  const tests = specs || (await selectTests())
     .map(test => `${__dirname}/spec/${test}`);
   helper.lib.build();
   await helper.lib.waitReady();

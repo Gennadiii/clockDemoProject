@@ -1,5 +1,9 @@
 import {LandingPo} from "../page_objects/landing.po";
 import {PagePa} from "./page.pa";
+import {helper} from "../../helpers/helper";
+
+
+const log = helper.logger.get('LandingPa');
 
 
 interface LandingPaInterface extends PagePa {
@@ -19,12 +23,12 @@ class LandingPa extends PagePa implements LandingPaInterface {
   };
 
   skipVersionUpdate() {
-    console.info('Skiping version update');
+    log.info('Skipping version update');
     return this.page.skipVersionButton.click();
   };
 
   openMorningTab() {
-    console.info('Opening morning tab');
+    log.info('Opening morning tab');
     return this.page.morningButton.click();
   };
 
