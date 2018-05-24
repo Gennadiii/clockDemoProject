@@ -17,6 +17,7 @@
     "dotenv-safe": "5.0.1",
     "jasmine": "2.8.0",
     "jasmine-console-reporter": "2.0.1",
+    "typescript-logging": "0.6.1",
     "wd": "0.3.12"
   },
   "author": "",

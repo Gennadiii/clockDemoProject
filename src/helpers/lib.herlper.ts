@@ -1,6 +1,10 @@
 import {fsHelper} from "./fs.helper";
 import {dateTimeHelper} from "./dateTime.helper";
+import {logger} from "./logger";
 const fs = require('fs');
+
+
+const log = logger.get('libHelper');
 
 
 const libHelper = {
@@ -33,7 +37,7 @@ const libHelper = {
             throw new Error(`Lib didn't build correctly: ${JSON.stringify(key)}`);
           }
         }));
-    console.log(`Lib build - success`);
+    log.info(`Lib build - success`);
   },
 
   async waitReady(timeout = 1000, interval = 0) {
