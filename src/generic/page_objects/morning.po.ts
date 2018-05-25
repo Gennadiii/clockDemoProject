@@ -3,17 +3,15 @@ import {Label} from "../components/label";
 
 
 interface MorningPoInterface {
-  name: string;
   volumeLabel: Label;
 }
 
 
 class MorningPo implements MorningPoInterface {
 
-  name;
+  name = 'Morning';
 
   constructor(private ef: elementFinderInterface) {
-    this.name = 'Morning';
   }
 
   get staticElements() {

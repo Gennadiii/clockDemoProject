@@ -3,7 +3,6 @@ import {Button} from "../components/button";
 
 
 interface LandingPoInterface {
-  name: string;
   skipVersionButton: Button;
   morningButton: Button;
 }
@@ -11,11 +10,11 @@ interface LandingPoInterface {
 
 class LandingPo implements LandingPoInterface {
 
-  name;
+  name = 'Landing';
 
   constructor(private ef: elementFinderInterface) {
-    this.name = 'Landing';
   }
+
   get staticElements() {
     return [this.morningButton];
   }

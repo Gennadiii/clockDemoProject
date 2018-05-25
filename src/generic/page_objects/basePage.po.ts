@@ -1,5 +1,4 @@
 interface BasePagePoInterface {
-  name: string;
   staticElements: Promise<boolean>[];
 }
 
