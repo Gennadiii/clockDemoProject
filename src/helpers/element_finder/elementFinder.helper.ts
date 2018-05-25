@@ -40,14 +40,14 @@ export {ef, ElementFinderInterface};
 
 
 function findElementBy(selectorType: string, value: string) {
-  return async () => (await driver).element(selectorType, value);
+  return async () => (await driver).appium.element(selectorType, value);
 }
 
 function findElementsBy(selectorType: string, value: string, options?) {
   options = options || {};
   const {index} = options;
   return async () => {
-    const elements = await (await driver).elements(selectorType, value);
+    const elements = await (await driver).appium.elements(selectorType, value);
     return index ? elements[index] : elements;
   }
 }

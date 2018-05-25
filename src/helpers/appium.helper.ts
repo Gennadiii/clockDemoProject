@@ -1,32 +1,79 @@
+import {logger} from "./logger";
 const wd = require('wd');
 
 
+const log = logger.get('Driver');
+
+
 interface DriverInterface {
-  init: () => Promise<any>;
+  appium: () => Promise<any>;
+  init: () => Promise<DriverInterface>;
+  appiumTerminate: () => Promise<any>;
+  hideKeyboard: () => Promise<any>;
+  appRelaunch: () => Promise<any>;
 }
 
 
 class Driver implements DriverInterface {
 
+  appium = null;
   private capabilities;
   private implicitWait;
   private appiumPort;
 
-  constructor(private params: DiverParamsInterface) {
+  constructor(private params: driverParams) {
     const {
       implicitWait,
       capabilities,
       appiumPort
     } = this.params;
+    switch (capabilities.platformName.toLowerCase()) {
+      case 'ios':
+        capabilities.platformName = 'iOS';
+        break;
+      case 'android':
+        capabilities.platformName = 'Android';
+        break;
+      default:
+        throw new Error(`Wrong platform name: ${capabilities.platformName}`);
+    }
     this.capabilities = capabilities;
     this.implicitWait = +implicitWait; // Comes as user input from runtime (string)
     this.appiumPort = +appiumPort; // Comes as user input from runtime (string)
   }
 
   async init() {
+    log.info(`Initializing appium`);
     let driver = wd.promiseChainRemote('localhost', this.appiumPort);
     await driver.init(this.capabilities).setImplicitWaitTimeout(this.implicitWait);
-    return driver;
+    this.appium = driver;
+    return this;
+  }
+
+  async appiumTerminate() {
+    log.info(`Terminating appium`);
+    await (await this.appium).quit();
+  }
+
+  async hideKeyboard() {
+    log.info(`Hiding keyboard`);
+    await (await this.appium).hideKeyboard();
+  }
+
+  async appRelaunch() {
+    log.info(`Relaunching app`);
+    await this.appClose();
+    await this.appLaunch();
+  }
+
+  private async appClose() {
+    log.info(`Closing application`);
+    await (await this.appium).closeApp();
+  }
+
+  private async appLaunch() {
+    log.info(`Launching application`);
+    await (await this.appium).launchApp();
   }
 
 }
@@ -42,8 +89,8 @@ interface capabilitiesInterface {
 }
 
 
-interface DiverParamsInterface {
+interface driverParams {
   capabilities: capabilitiesInterface;
-  implicitWait: number | string;
-  appiumPort: number | string;
+  implicitWait: string | number;
+  appiumPort: string | number;
 }
