@@ -1,5 +1,6 @@
 import {ElementFinderInterface} from "../../helpers/element_finder/elementFinder.helper";
 import {Button} from "../components/button";
+import {BasePagePo} from "./basePage.po";
 
 
 interface LandingPoInterface {
@@ -8,11 +9,12 @@ interface LandingPoInterface {
 }
 
 
-class LandingPo implements LandingPoInterface {
+class LandingPo extends BasePagePo implements LandingPoInterface {
 
   name = 'Landing';
 
   constructor(private ef: ElementFinderInterface) {
+    super();
   }
 
   get staticElements() {

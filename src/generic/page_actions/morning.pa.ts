@@ -19,7 +19,7 @@ class MorningPa extends BasePagePa implements MorningPaInterface {
 
   getVolume() {
     log.info('Getting volume');
-    return this.page.volumeLabel.text();
+    return this.page.volumeLabel.getText();
   }
 
 }

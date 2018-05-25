@@ -1,5 +1,6 @@
 import {ElementFinderInterface} from "../../helpers/element_finder/elementFinder.helper";
 import {Label} from "../components/label";
+import {BasePagePo} from "./basePage.po";
 
 
 interface MorningPoInterface {
@@ -7,11 +8,12 @@ interface MorningPoInterface {
 }
 
 
-class MorningPo implements MorningPoInterface {
+class MorningPo extends BasePagePo implements MorningPoInterface {
 
   name = 'Morning';
 
   constructor(private ef: ElementFinderInterface) {
+    super();
   }
 
   get staticElements() {

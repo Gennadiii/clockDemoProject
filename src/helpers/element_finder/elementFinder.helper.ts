@@ -1,5 +1,5 @@
 import {driver} from "../../../index";
-import {logger} from "../logger";
+import {logger} from "../logger.helper";
 
 
 const log = logger.get('ElementFinder');
@@ -7,9 +7,10 @@ const log = logger.get('ElementFinder');
 
 interface ElementFinderInterface {
   all: ElementFinderInterface;
-  id: (string, options?) => () => Promise<any>;
-  xpath: (string, options?) => () => Promise<any>;
-  className: (string, options?) => () => Promise<any>;
+  id: (id: string, options?) => () => Promise<any>;
+  xpath: (xpath: string, options?) => () => Promise<any>;
+  className: (className: string, options?) => () => Promise<any>;
+  text: (text: string, options?) => () => Promise<any>;
 }
 
 
@@ -22,16 +23,24 @@ class ElementFinder implements ElementFinderInterface {
     return new ElementFinder(findElementsBy);
   }
 
-  id(id: string, options?) {
+  id(id, options?) {
     return this.searchFunction('id', id, options);
   }
 
-  xpath(xpath: string, options?) {
-    return this.searchFunction('XPath', xpath, options);
+  xpath(xpath, options?) {
+    return this.searchFunction('xpath', xpath, options);
   }
 
-  className(className: string, options?) {
+  className(className, options?) {
     return this.searchFunction('class name', className, options);
+  }
+
+  text(text, options = {partial: false}) {
+    const {partial} = options;
+    const locator = partial
+      ? `//*[contains(@text, '${text}']`
+      : `//*[@text = '${text}']`;
+    return this.searchFunction('xpath', locator, options);
   }
 
 }
@@ -43,15 +52,15 @@ const ef = new ElementFinder(findElementBy);
 export {ef, ElementFinderInterface};
 
 
-function findElementBy(selectorType: string, value: string) {
-  return async () => (await driver).appium.element(selectorType, value);
+function findElementBy(using: string, value: string) {
+  return async () => (await driver).appium.element(using, value);
 }
 
-function findElementsBy(selectorType: string, value: string, options?) {
+function findElementsBy(using: string, value: string, options?) {
   options = options || {};
   const {index} = options;
   return async () => {
-    const elements = await (await driver).appium.elements(selectorType, value);
+    const elements = await (await driver).appium.elements(using, value);
     elements.length === 0 && log.warn(`Couldn't find elements with search string: ${value}`);
     return index !== undefined ? elements[index] : elements;
   }

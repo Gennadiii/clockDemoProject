@@ -1,6 +1,6 @@
 import {fsHelper} from "./fs.helper";
 import {dateTimeHelper} from "./dateTime.helper";
-import {logger} from "./logger";
+import {logger} from "./logger.helper";
 const fs = require('fs');
 
 
