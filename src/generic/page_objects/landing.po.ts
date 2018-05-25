@@ -1,4 +1,4 @@
-import {elementFinderInterface} from "../../helpers/element_finder/elementFinder.helper";
+import {ElementFinderInterface} from "../../helpers/element_finder/elementFinder.helper";
 import {Button} from "../components/button";
 
 
@@ -12,7 +12,7 @@ class LandingPo implements LandingPoInterface {
 
   name = 'Landing';
 
-  constructor(private ef: elementFinderInterface) {
+  constructor(private ef: ElementFinderInterface) {
   }
 
   get staticElements() {

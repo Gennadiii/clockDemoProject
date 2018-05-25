@@ -1,4 +1,4 @@
-import {elementFinderInterface} from "./element_finder/elementFinder.helper";
+import {ElementFinderInterface} from "./element_finder/elementFinder.helper";
 
 
 const assembler = {
@@ -26,6 +26,6 @@ interface partInterface {
 
 interface buildServiceInterface {
   service: any;
-  elementFinder: elementFinderInterface;
+  elementFinder: ElementFinderInterface;
   parts: partInterface[];
 }

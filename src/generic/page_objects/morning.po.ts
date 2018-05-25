@@ -1,4 +1,4 @@
-import {elementFinderInterface} from "../../helpers/element_finder/elementFinder.helper";
+import {ElementFinderInterface} from "../../helpers/element_finder/elementFinder.helper";
 import {Label} from "../components/label";
 
 
@@ -11,7 +11,7 @@ class MorningPo implements MorningPoInterface {
 
   name = 'Morning';
 
-  constructor(private ef: elementFinderInterface) {
+  constructor(private ef: ElementFinderInterface) {
   }
 
   get staticElements() {

@@ -17,7 +17,7 @@ class BasePagePa extends BasePagePo implements BasePagePaInterface {
   protected page: any = basePagePo; // Type any is to avoid inheritance issues
 
   async checkIsOpen() {
-    log.info(`Checking if ${this.page.name} page is opened`);
+    log.info(`Checking if "${this.page.name}" page is opened`);
     const isDisplayedArr = this.page.staticElements
       .map(element => element.isDisplayed());
     return helper.promise.allTrue({arr: isDisplayedArr});
