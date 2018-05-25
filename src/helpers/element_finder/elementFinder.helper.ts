@@ -1,11 +1,15 @@
 import {driver} from "../../../index";
+import {logger} from "../logger";
+
+
+const log = logger.get('ElementFinder');
 
 
 interface ElementFinderInterface {
   all: ElementFinderInterface;
-  id: (string) => () => Promise<any>;
-  xpath: (string) => () => Promise<any>;
-  className: (string) => () => Promise<any>;
+  id: (string, options?) => () => Promise<any>;
+  xpath: (string, options?) => () => Promise<any>;
+  className: (string, options?) => () => Promise<any>;
 }
 
 
@@ -18,16 +22,16 @@ class ElementFinder implements ElementFinderInterface {
     return new ElementFinder(findElementsBy);
   }
 
-  id(id: string) {
-    return this.searchFunction('id', id);
+  id(id: string, options?) {
+    return this.searchFunction('id', id, options);
   }
 
-  xpath(xpath: string) {
-    return this.searchFunction('XPath', xpath);
+  xpath(xpath: string, options?) {
+    return this.searchFunction('XPath', xpath, options);
   }
 
-  className(className: string) {
-    return this.searchFunction('className', className);
+  className(className: string, options?) {
+    return this.searchFunction('class name', className, options);
   }
 
 }
@@ -48,6 +52,7 @@ function findElementsBy(selectorType: string, value: string, options?) {
   const {index} = options;
   return async () => {
     const elements = await (await driver).appium.elements(selectorType, value);
-    return index ? elements[index] : elements;
+    elements.length === 0 && log.warn(`Couldn't find elements with search string: ${value}`);
+    return index !== undefined ? elements[index] : elements;
   }
 }
