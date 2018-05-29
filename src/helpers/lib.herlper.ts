@@ -1,6 +1,6 @@
 import {fsHelper} from "./fs.helper";
-import {dateTimeHelper} from "./dateTime.helper";
 import {logger} from "./logger.helper";
+import {waitersHelper} from "./waiters.helper";
 const fs = require('fs');
 
 
@@ -12,6 +12,7 @@ const libHelper = {
   all: null,
 
   build() {
+    log.info(`Building lib`);
     const lib = {};
     const libTypes = fs.readdirSync(`${__dirname}/../generic`);
 
@@ -29,32 +30,26 @@ const libHelper = {
     this.all = lib;
   },
 
-  healthCheck(lib) {
+  findBrokenParts(lib) {
+    const broken = [];
     findNestedObjects(lib)
       .forEach(obj => Object.keys(obj)
-        .forEach(key => {
-          if (obj[key] === null) {
-            throw new Error(`Lib didn't build correctly: ${JSON.stringify(key)}`);
-          }
-        }));
-    log.info(`Lib build - success`);
+        .forEach(key => obj[key] || broken.push(key)));
+    return broken;
   },
 
-  async waitReady(timeout = 1000, interval = 0) {
-    const startTime = +new Date();
-    let timeSpent = 0;
-    while (timeout > timeSpent) {
-      await dateTimeHelper.sleep(interval);
-      timeSpent = +new Date() - startTime;
-      try {
-        return this.healthCheck(this.all);
-      } catch (err) {
-        if (!err.message.includes(`Lib didn't build correctly`)) {
-          throw err;
-        }
-      }
+  async waitReady() {
+    log.info(`Waiting for lib build finish`);
+    try {
+      await waitersHelper.wait(
+        () => !this.findBrokenParts(this.all).length,
+        1000, 0);
+    } catch (err) {
+      log.error(err);
+      throw new Error(`Lib didn't build correctly: 
+      ${JSON.stringify(this.findBrokenParts(this.all))}`);
     }
-    this.healthCheck(this.all);
+    log.info(`Lib build - success`);
   },
 
 };

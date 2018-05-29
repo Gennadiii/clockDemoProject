@@ -43,7 +43,7 @@ void async function main() {
     await jasmine.addSpecFiles(tests);
     await jasmine.execute();
   } catch (err) {
-    log.error(err);
+    log.error(err.message);
     process.exit(13);
   }
 }();
