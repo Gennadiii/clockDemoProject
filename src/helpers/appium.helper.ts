@@ -11,6 +11,7 @@ interface DriverInterface {
   appiumTerminate: () => Promise<any>;
   hideKeyboard: () => Promise<any>;
   appRelaunch: () => Promise<any>;
+  setImplicitTimeout: (time: number) => Promise<any>;
 }
 
 
@@ -45,9 +46,15 @@ class Driver implements DriverInterface {
   async init() {
     log.info(`Initializing appium`);
     let driver = wd.promiseChainRemote('localhost', this.appiumPort);
-    await driver.init(this.capabilities).setImplicitWaitTimeout(this.implicitWait);
+    await driver
+      .init(this.capabilities)
+      .setImplicitWaitTimeout(this.implicitWait);
     this.appium = driver;
     return this;
+  }
+
+  async setImplicitTimeout(time) {
+    await this.appium.setImplicitWaitTimeout(time);
   }
 
   async appiumTerminate() {
