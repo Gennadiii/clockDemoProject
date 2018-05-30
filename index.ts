@@ -29,19 +29,26 @@ export const driver = new Driver({
   capabilities,
   implicitWait,
   appiumPort
-}).init();
+});
+const appium = driver.init();
 
 
 void async function main() {
   try {
     helper.lib.build();
     await helper.lib.waitReady();
+
     const getServices = (await import("./src/assembler")).getServices;
     jasmine.env.service = getServices({platform});
+
     const tests = specs || (await selectTests())
       .map(test => `${__dirname}/spec/${test}`);
+
+    await driver.waitUntilInitialized(appium);
+
     await jasmine.addSpecFiles(tests);
     await jasmine.execute();
+
   } catch (err) {
     log.error(err.message);
     process.exit(13);
