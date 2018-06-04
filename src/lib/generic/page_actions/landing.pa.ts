@@ -1,6 +1,6 @@
 import {LandingPo} from "../page_objects/landing.po";
 import {BasePagePa} from "./basePage.pa";
-import {helper} from "../../helpers/helper";
+import {helper} from "../../../helpers/helper";
 
 
 const log = helper.logger.get('LandingPa');

@@ -1,6 +1,6 @@
 import {androidServices} from "./platforms/android/androidAssembler";
-import {LandingService} from "./generic/services/landing.service";
-import {MorningService} from "./generic/services/morning.service";
+import {LandingService} from "./lib/generic/services/landing.service";
+import {MorningService} from "./lib/generic/services/morning.service";
 
 
 interface assemblerInterface {

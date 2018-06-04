@@ -1,6 +1,6 @@
 import {BasePagePa} from "./basePage.pa";
 import {MorningPo} from "../page_objects/morning.po";
-import {helper} from "../../helpers/helper";
+import {helper} from "../../../helpers/helper";
 
 
 const log = helper.logger.get('MorningPa');
