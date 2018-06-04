@@ -9,6 +9,7 @@ const testChoiseNumberPath = `${__dirname}/testChoiseNumber.indexHelper`;
 
 async function selectTests(): Promise<string[]> {
   try {
+
     const testsPaths = fsHelper.getFiles(specsPath);
     const promptOptions = getPromptObj(testsPaths);
     return await multiselectPrompt({
@@ -23,7 +24,7 @@ async function selectTests(): Promise<string[]> {
 }
 
 
-export {selectTests}
+export {selectTests};
 
 
 function getPromptObj(arr) {
@@ -76,7 +77,7 @@ function writeInput(items) {
       fs.writeFileSync(testChoiseNumberPath, index);
       return true;
     }
-  })
+  });
 }
 
 function readRememberedInput() {

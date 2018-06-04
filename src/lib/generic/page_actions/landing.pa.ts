@@ -21,12 +21,12 @@ class LandingPa extends BasePagePa implements LandingPaInterface {
   skipVersionUpdate() {
     log.info('Skipping version update');
     return this.page.skipVersionButton.click();
-  };
+  }
 
   openMorningTab() {
     log.info('Opening morning tab');
     return this.page.morningButton.click();
-  };
+  }
 
 }
 

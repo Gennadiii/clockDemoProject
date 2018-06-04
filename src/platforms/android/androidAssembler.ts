@@ -9,7 +9,7 @@ const {
     page_actions: {LandingPa, MorningPa},
     services: {LandingService, MorningService}
   }
-} = (<any>helper.lib.all);
+} = (helper.lib.all as any);
 
 
 const androidServices: assemblerInterface = {
