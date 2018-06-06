@@ -13,7 +13,7 @@ class LandingPo extends BasePagePo implements LandingPoInterface {
 
   name = 'Landing';
 
-  constructor(private ef: ElementFinderInterface) {
+  constructor(protected ef: ElementFinderInterface) {
     super();
   }
 
